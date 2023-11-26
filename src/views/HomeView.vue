@@ -25,7 +25,22 @@
             <tr v-else v-for="(student, i) in this.students" :key="student.id">
               <td v-text="i + 1"></td>
               <td v-text="student.id"></td>
-              <td v-text="student.foto"></td>
+              <td>
+                <img
+                  v-if="student.foto"
+                  style="width: 150px !important"
+                  :src="student.foto"
+                  class="img-thumbnail"
+                  alt=""
+                />
+                <img
+                  v-else
+                  style="width: 150px !important"
+                  src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-256.png"
+                  class="img-thumbnail"
+                  alt=""
+                />
+              </td>
               <td v-text="student.nombre"></td>
               <td v-text="student.apellido"></td>
               <!-- friendly date reading -->
