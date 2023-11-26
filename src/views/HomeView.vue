@@ -65,7 +65,11 @@
                   <i class="fa-solid fa-edit"></i>
                 </router-link>
                 &nbsp;
-                <button class="btn btn-danger">
+                <!-- call delete method to delete a student -->
+                <button
+                  class="btn btn-danger"
+                  v-on:click="deleteStudent(student.id, student.nombre)"
+                >
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </td>
@@ -79,6 +83,7 @@
 
 <script>
 import axios from "axios";
+import { confirm } from "../functions";
 
 export default {
   //students data
@@ -94,6 +99,7 @@ export default {
   },
   //http methods
   methods: {
+    //show students
     getStudents() {
       this.loading = true;
       axios
@@ -102,6 +108,18 @@ export default {
           this.students = res.data;
           this.loading = false;
         });
+    },
+    //delete students
+    deleteStudent(id, name) {
+      console.log(`Click en el botón de eliminación para ${name} con ID ${id}`);
+      confirm(
+        "http://academicobackend.test/api/v1/estudiantes/",
+        id,
+        "Eliminar estudiante",
+        "info",
+        "Realmente desea eliminar a " + name + "?"
+      );
+      this.loading = false;
     },
   },
 };
