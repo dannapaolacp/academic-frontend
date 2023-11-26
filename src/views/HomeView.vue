@@ -34,7 +34,26 @@
                   new Date(student.created_at).toLocaleDateString('en-US')
                 "
               ></td>
-              <td></td>
+              <!-- buttons for actions -->
+              <td>
+                <router-link
+                  :to="{ path: 'view/' + student.id }"
+                  class="btn btn-info"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </router-link>
+                &nbsp;
+                <router-link
+                  :to="{ path: 'edit/' + student.id }"
+                  class="btn btn-warning"
+                >
+                  <i class="fa-solid fa-edit"></i>
+                </router-link>
+                &nbsp;
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
